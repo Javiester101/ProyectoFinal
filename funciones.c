@@ -88,8 +88,7 @@ void ingresarDatos() {
             max_dia = 31;
         }
 
-        printf("Ingrese el dia (actual):);
-
+        printf("Ingrese el dia (actual): ");
         if (scanf("%f", &valorTemporal) != 1) {
             printf("Debe ingresar un numero. Intente de nuevo.\n");
             while (getchar() != '\n');
