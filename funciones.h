@@ -47,6 +47,9 @@ void GenerarReporte();
 void IncluirArchivoEnReporte(FILE *reporte, const char *nombreArchivo);
 void MostrarReporte();
 void MenuDeOpciones ();
+void menuPrediccion24hZona();
+void menuReporteZona();
+void mostrarReporteZonaGenerado();
 
 // Función para iniciar el programa
 /*void Inicioprograma(){
