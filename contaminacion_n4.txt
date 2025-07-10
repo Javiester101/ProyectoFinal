@@ -1,8 +1,8 @@
 ADVERTENCIA SEVERA: ¡CALIDAD DEL AIRE MUY DANINA!
 La calidad del aire representa un riesgo muy alto para la salud. Evite la exposición prolongada.
 Recomendaciones Importantes: 
-	Evitar la actividad física al aire libre, en especial la de alta intensidad.
-	Se recomienda que los grupos sensibles —como niños, personas mayores o con afecciones respiratorias o cardíacas— permanezcan en interiores.
+	Evitar la actividad fisica al aire libre, en especial la de alta intensidad.
+	Se recomienda que los grupos sensibles como ninos, personas mayores o con afecciones respiratorias o cardiacas, permanezcan en interiores.
 	En caso de ser estrictamente necesario salir, considerar el uso de mascarillas KN95.
 	Las autoridades se encuentran evaluando la implementación de cierres temporales en industrias y restricciones a la circulación vehicular.
-	Mantener cerradas puertas y ventanas para reducir la exposición al aire exterior.
+	Mantener cerradas puertas y ventanas para reducir la exposicion al aire exterior.
