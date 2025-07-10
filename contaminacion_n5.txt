@@ -4,10 +4,9 @@ ALERTA MAXIMA: ¡CALIDAD DEL AIRE PELIGROSA!
 Se ha declarado una emergencia por contaminacion del aire.
 
 Medidas Urgentes: 
-	Permanecer en interiores. Evitar toda actividad al aire libre.
-	Cerrar ventanas y puertas. Utilizar purificadores de aire si se dispone de ellos.
-	Suspension total de actividades escolares y laborales no esenciales al aire libre.
-	Cierre temporal y estricto de industrias contaminantes.
-	Restriccion masiva de la circulacion vehicular (solo transporte esencial).
-	Consultar a su medico si experimenta dificultades respiratorias.
-
+	Permanecer dentro de espacios cerrados, evitando cualquier actividad al aire libre.
+	Mantener puertas y ventanas cerradas; utilizar purificadores de aire en caso de contar con ellos.
+	Suspender por completo las actividades escolares y laborales no esenciales que se realicen al aire libre.
+	Implementar un cierre temporal y riguroso de industrias con alto impacto contaminante.
+	Restringir de forma generalizada la circulación vehicular, permitiendo únicamente el transporte esencial.
+	Consultar con un profesional de la salud ante cualquier dificultad respiratoria.

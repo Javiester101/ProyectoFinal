@@ -1,4 +1,4 @@
-FechaHora;Belisario;Centro;Cotocollao;Los Chillos;Tumbaco
+FechaHora;Carapungo;Centro;Cotocollao;Sangolqui;Tumbaco
 2025/01/01 00:00;38,65;51,58;24,81;38,2;31,84
 2025/01/01 01:00;36,63;33,19;46,86;47,53;42,32
 2025/01/01 02:00;42,91;43,98;36,6;22,4;38,12
@@ -4345,16 +4345,3 @@ FechaHora;Belisario;Centro;Cotocollao;Los Chillos;Tumbaco
 2025/06/30 23:00;27,81;63,52;49,03;35,41;51,5
 
 Pendiente= (prediccion en 24h-ultimo dato)/24; -0,277532929; 0,964459; 0,047835; -1,14707; 0,34682831/12/2025,22:00,Belisario,2.00
-
-
-
-31/07/2025;22:00;Belisario;0.65
-31/07/2025;22:00;Centro;0.50
-31/07/2025;22:00;Cotocollao;0.34
-31/07/2025;22:00;Los Chillos;0.12
-31/07/2025;22:00;Tumbaco;0.99
-22/12/2025;11:00;Belisario;0.10
-22/12/2025;11:00;Centro;0.12
-22/12/2025;11:00;Cotocollao;0.23
-22/12/2025;11:00;Los Chillos;0.53
-22/12/2025;11:00;Tumbaco;0.65

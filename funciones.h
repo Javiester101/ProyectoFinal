@@ -16,7 +16,7 @@ typedef struct Zona {
     char nombre[20];
     Contaminante contaminantes[5];
     float datosContaminacion[5];
-    float valoresPrediccion[5];
+    float valoresTendencia[5]; // antes valoresPrediccion/valoresPendiente
 } Zona;
 
 // Declaraciones de variables globales (no definiciones)

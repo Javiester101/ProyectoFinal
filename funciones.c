@@ -3,15 +3,13 @@
 #include <math.h>
 #include <string.h>
 #include "funciones.h"
-
+// Limites de contaminacion segun la OMS
 #define LIM_PM25 15
 #define LIM_PM10 45
 #define LIM_NO2 25
 #define LIM_SO2 40
 #define LIM_CO 4
 #define ANO_ACTUAL 2025
-
-// Limites de contaminacion segun la OMS
 
 // Declaracion de la funcion que incluye el contenido de un archivo en el reporte
 void incluirArchivoEnReporte(FILE *reporte, const char *nombreArchivo);
@@ -172,8 +170,7 @@ void ingresarDatos() {
 //Datos de CO
 void GuardarDatosCO (){
     //Abre el archivo CSV para guardar los datos de CO2
-    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion.zip\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosCO.csv", "a");
-
+    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosCO.csv", "a");
     if (archivo == NULL) {
         printf("No se pudo abrir el archivo CSV para escritura.\n");
         return;
@@ -194,8 +191,7 @@ void GuardarDatosCO (){
 //Datos de SO2
 void GuardarDatosSO2 (){
     //Abre el archivo CSV para guardar los datos de SO2
-    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion.zip\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosSO2.csv", "a");
-
+    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosSO2.csv", "a");
     if (archivo == NULL) {
         printf("No se pudo abrir el archivo CSV para escritura.\n");
         return;
@@ -217,8 +213,7 @@ void GuardarDatosSO2 (){
 //Datos de NO2
 void GuardarDatosNO2 (){
     //Abre el archivo CSV para guardar los datos de NO2
-    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion.zip\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosNO2.csv", "a");
-
+    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosNO2.csv", "a");
     if (archivo == NULL) {
         printf("No se pudo abrir el archivo CSV para escritura.\n");
         return;
@@ -239,8 +234,7 @@ void GuardarDatosNO2 (){
 //Datos de PM10
 void GuardarDatosPM10 (){
     //Abre el archivo CSV para guardar los datos de PM10
-    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion.zip\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosPM10.csv", "a");
-
+    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosPM10.csv", "a");
     if (archivo == NULL) {
         printf("No se pudo abrir el archivo CSV para escritura.\n");
         return;
@@ -260,8 +254,7 @@ void GuardarDatosPM10 (){
 //Datos de PM2.5
 void GuardarDatosPM25 (){
     //Abre el archivo CSV para guardar los datos de PM2.5
-    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion.zip\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosPM25.csv", "a");
-
+    FILE *archivo = fopen("C:\\Users\\nicol\\OneDrive\\Escritorio\\Simuladores\\CODES\\Code in C\\Semestre 2\\ProyectoFinalProgramacion\\ProyectoFinalProgramacion\\ProyectoFinal\\DatosHistoricosPM25.csv", "a");
     if (archivo == NULL) {
         printf("No se pudo abrir el archivo CSV para escritura.\n");
         return;
@@ -282,14 +275,13 @@ void GuardarDatosPM25 (){
 void CalcularCO24h() {
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[4];
-        float pendiente = zonas[i].valoresPrediccion[4];
-        float prediccion = valor_actual + pendiente * 1;
+        float tendencia = zonas[i].valoresTendencia[4];
+        float prediccion = valor_actual + tendencia * 1;
         zonas24[i].datosContaminacion[4] = prediccion;
-        printf("Prediccion CO (24h) en %s: actual=%.3f, pendiente=%.6f, predicho=%.3f\n",
-               zonas[i].nombre, valor_actual, pendiente, prediccion);
+        printf("Prediccion CO (24h) en %s: actual=%.3f, tendencia=%.6f, predicho=%.3f\n",
+               zonas[i].nombre, valor_actual, tendencia, prediccion);
     }
 }
-
 
 void MostrarPrediccionCO24Horas() {
     printf("\n========= PREDICCION DE CO PARA LAS PROXIMAS 24 HORAS =========\n");
@@ -298,11 +290,11 @@ void MostrarPrediccionCO24Horas() {
 
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[4];
-        float pendiente = zonas[i].valoresPrediccion[4];
+        float tendencia = zonas[i].valoresTendencia[4];
         float suma = 0;
 
         for (int h = 1; h <= 24; h++) {
-            float prediccion = valor_actual + pendiente * h;
+            float prediccion = valor_actual + tendencia * h;
             suma += prediccion;
         }
 
@@ -314,18 +306,16 @@ void MostrarPrediccionCO24Horas() {
     printf("============================================================================\n");
 }
 
-
 void CalcularSO224h() {
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[3];
-        float pendiente = zonas[i].valoresPrediccion[3];
-        float prediccion = valor_actual + pendiente * 1;
+        float tendencia = zonas[i].valoresTendencia[3];
+        float prediccion = valor_actual + tendencia * 1;
         zonas24[i].datosContaminacion[3] = prediccion;
-        printf("Prediccion SO2 (24h) en %s: actual=%.3f, pendiente=%.6f, predicho=%.3f\n",
-               zonas[i].nombre, valor_actual, pendiente, prediccion);
+        printf("Prediccion SO2 (24h) en %s: actual=%.3f, tendencia=%.6f, predicho=%.3f\n",
+               zonas[i].nombre, valor_actual, tendencia, prediccion);
     }
 }
-
 
 void MostrarPrediccionSO2_24Horas() {
     printf("\n========= PROMEDIO DE PREDICCION DE SO2 PARA LAS PROXIMAS 24 HORAS =========\n");
@@ -334,11 +324,11 @@ void MostrarPrediccionSO2_24Horas() {
 
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[3];  // SO2 actual
-        float pendiente = zonas[i].valoresPrediccion[3];
+        float tendencia = zonas[i].valoresTendencia[3];
         float suma = 0;
 
         for (int h = 1; h <= 24; h++) {
-            float prediccion = valor_actual + pendiente * h;
+            float prediccion = valor_actual + tendencia * h;
             suma += prediccion;
         }
 
@@ -353,11 +343,11 @@ void MostrarPrediccionSO2_24Horas() {
 void CalcularNO224h() {
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[2];
-        float pendiente = zonas[i].valoresPrediccion[2];
-        float prediccion = valor_actual + pendiente * 1;
+        float tendencia = zonas[i].valoresTendencia[2];
+        float prediccion = valor_actual + tendencia * 1;
         zonas24[i].datosContaminacion[2] = prediccion;
-        printf("Prediccion NO2 (24h) en %s: actual=%.3f, pendiente=%.6f, predicho=%.3f\n",
-               zonas[i].nombre, valor_actual, pendiente, prediccion);
+        printf("Prediccion NO2 (24h) en %s: actual=%.3f, tendencia=%.6f, predicho=%.3f\n",
+               zonas[i].nombre, valor_actual, tendencia, prediccion);
     }
 }
 
@@ -368,11 +358,11 @@ printf("\n========= PREDICCION DE NO2 PARA LAS PROXIMAS 24 HORAS =========\n");
 
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[2];  // NO2 actual
-        float pendiente = zonas[i].valoresPrediccion[2];
+        float tendencia = zonas[i].valoresTendencia[2];
         float suma = 0;
 
         for (int h = 1; h <= 24; h++) {
-            float prediccion = valor_actual + pendiente * h;
+            float prediccion = valor_actual + tendencia * h;
             suma += prediccion;
         }
 
@@ -384,18 +374,16 @@ printf("\n========= PREDICCION DE NO2 PARA LAS PROXIMAS 24 HORAS =========\n");
     printf("=============================================================================\n");
 }
 
-
 void CalcularPM1024h() {
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[1];
-        float pendiente = zonas[i].valoresPrediccion[1];
-        float prediccion = valor_actual + pendiente * 1;
+        float tendencia = zonas[i].valoresTendencia[1];
+        float prediccion = valor_actual + tendencia * 1;
         zonas24[i].datosContaminacion[1] = prediccion;
-        printf("Prediccion PM10 (24h) en %s: actual=%.3f, pendiente=%.6f, predicho=%.3f\n",
-               zonas[i].nombre, valor_actual, pendiente, prediccion);
+        printf("Prediccion PM10 (24h) en %s: actual=%.3f, tendencia=%.6f, predicho=%.3f\n",
+               zonas[i].nombre, valor_actual, tendencia, prediccion);
     }
 }
-
 
 void MostrarPrediccionPM10_24Horas() {
     printf("\n========= PREDICCION DE PM10 PARA LAS PROXIMAS 24 HORAS =========\n");
@@ -404,11 +392,11 @@ void MostrarPrediccionPM10_24Horas() {
 
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[1];
-        float pendiente = zonas[i].valoresPrediccion[1];
+        float tendencia = zonas[i].valoresTendencia[1];
         float suma = 0;
 
         for (int h = 1; h <= 24; h++) {
-            float prediccion = valor_actual + pendiente * h;
+            float prediccion = valor_actual + tendencia * h;
             suma += prediccion;
         }
 
@@ -420,18 +408,16 @@ void MostrarPrediccionPM10_24Horas() {
     printf("=============================================================================\n");
 }
 
-
 void CalcularPM2524h() {
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[0];
-        float pendiente = zonas[i].valoresPrediccion[0];
-        float prediccion = valor_actual + pendiente * 1;
+        float tendencia = zonas[i].valoresTendencia[0];
+        float prediccion = valor_actual + tendencia * 1;
         zonas24[i].datosContaminacion[0] = prediccion;
-        printf("Prediccion PM2.5 (24h) en %s: actual=%.3f, pendiente=%.6f, predicho=%.3f\n",
-               zonas[i].nombre, valor_actual, pendiente, prediccion);
+        printf("Prediccion PM2.5 (24h) en %s: actual=%.3f, tendencia=%.6f, predicho=%.3f\n",
+               zonas[i].nombre, valor_actual, tendencia, prediccion);
     }
 }
-
 
 void MostrarPrediccionPM25_24Horas() {
     printf("\n========= PREDICCION DE PM2.5 PARA LAS PROXIMAS 24 HORAS =========\n");
@@ -440,11 +426,11 @@ void MostrarPrediccionPM25_24Horas() {
 
     for (int i = 0; i < cantidad; i++) {
         float valor_actual = zonas[i].datosContaminacion[0];     // PM2.5
-        float pendiente = zonas[i].valoresPrediccion[0];
+        float tendencia = zonas[i].valoresTendencia[0];
         float suma = 0;
 
         for (int h = 1; h <= 24; h++) {
-            float prediccion = valor_actual + pendiente * h;
+            float prediccion = valor_actual + tendencia * h;
             suma += prediccion;
         }
 
@@ -455,7 +441,6 @@ void MostrarPrediccionPM25_24Horas() {
 
     printf("=============================================================================\n");
 }
-
 
 void GenerarReporte() {
     FILE *reporte = fopen("reporte_contaminacion.txt", "w");
@@ -471,10 +456,10 @@ void GenerarReporte() {
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             float valor_actual = zonas[i].datosContaminacion[j];
-            float pendiente = zonas[i].valoresPrediccion[j];
+            float tendencia = zonas[i].valoresTendencia[j];
             float suma = 0;
             for (int h = 1; h <= 24; h++) {
-                float prediccion = valor_actual + pendiente * h;
+                float prediccion = valor_actual + tendencia * h;
                 suma += prediccion;
             }
             float promedio = suma / 24.0;
@@ -485,7 +470,6 @@ void GenerarReporte() {
                 zonas[i].datosContaminacion[j],
                 zonas24[i].datosContaminacion[j]);
         }
-        //AQUÍ FALTA IMRIMIR ALERTAS Y RECOMENDACIONES
       // Determinar contaminante con mayor contaminación
         int idx_mayor = 0;
         float max_contaminacion = zonas[i].datosContaminacion[0]; //establece el máximo como el primer dato del primer contaminante
@@ -615,25 +599,25 @@ void MostrarReporte(){
 
 // Definición de variables globales (solo aquí, no en el .h)
 struct Zona zonas[5] = {
-    {"Belisario",  {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
+    {"Carapungo",  {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
     {"Centro",     {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
     {"Cotocollao", {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
-    {"Los Chillos",{{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
+    {"Sangolqui",  {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
     {"Tumbaco",    {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}}
 };
 
 struct Zona zonas24[5] = {
-    {"Belisario", {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
+    {"Carapungo", {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
     {"Centro",    {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
     {"Cotocollao",{{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
-    {"Los Chillos",{{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
+    {"Sangolqui", {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}},
     {"Tumbaco",   {{"PM2.5"}, {"PM10"}, {"NO2"}, {"SO2"}, {"CO"}}, {0}, {0}}
 };
 
 int cantidad = 5;
 struct RegistroFecha fecha;
 
-// Nueva función para predicción de 24h por zona con validación de datos
+//Función para predicción de 24h por zona con validación de datos
 void menuPrediccion24hZona() {
     int zonaSeleccionada = -1;
     printf("Seleccione la zona para mostrar la prediccion de 24h:\n");
@@ -643,7 +627,7 @@ void menuPrediccion24hZona() {
     do {
         printf("Ingrese el numero de la zona (1-%d): ", cantidad);
         if (scanf("%d", &zonaSeleccionada) != 1 || zonaSeleccionada < 1 || zonaSeleccionada > cantidad) {
-            printf("Opción inválida. Intente de nuevo.\n");
+            printf("Opción invalida. Intente de nuevo.\n");
             while (getchar() != '\n');
             zonaSeleccionada = -1;
         }
@@ -666,59 +650,59 @@ void menuPrediccion24hZona() {
     // Calcular y mostrar predicciones solo para la zona seleccionada
     // CO
     float valor_actual = zonas[zonaSeleccionada].datosContaminacion[4];
-    float pendiente = zonas[zonaSeleccionada].valoresPrediccion[4];
+    float tendencia = zonas[zonaSeleccionada].valoresTendencia[4];
     float suma = 0;
     for (int h = 1; h <= 24; h++) {
-        float prediccion = valor_actual + pendiente * h;
+        float prediccion = valor_actual + tendencia * h;
         suma += prediccion;
     }
     float promedio = suma / 24.0;
     printf("\n========= PREDICCION DE LA ZONA PARA LAS PROXIMAS 24 HORAS =========\n");
-    printf("Zona: %s | Prediccion CO: %.3f\n", zonas[zonaSeleccionada].nombre, promedio);
+    printf("Zona: %s | Prediccion CO: %.2f\n", zonas[zonaSeleccionada].nombre, promedio);
 
     // PM10
     valor_actual = zonas[zonaSeleccionada].datosContaminacion[1];
-    pendiente = zonas[zonaSeleccionada].valoresPrediccion[1];
+    tendencia = zonas[zonaSeleccionada].valoresTendencia[1];
     suma = 0;
     for (int h = 1; h <= 24; h++) {
-        float prediccion = valor_actual + pendiente * h;
+        float prediccion = valor_actual + tendencia * h;
         suma += prediccion;
     }
     promedio = suma / 24.0;
-    printf("Zona: %s | Prediccion PM10: %.3f\n", zonas[zonaSeleccionada].nombre, promedio);
+    printf("Zona: %s | Prediccion PM10: %.2f\n", zonas[zonaSeleccionada].nombre, promedio);
 
     // PM2.5
     valor_actual = zonas[zonaSeleccionada].datosContaminacion[0];
-    pendiente = zonas[zonaSeleccionada].valoresPrediccion[0];
+    tendencia = zonas[zonaSeleccionada].valoresTendencia[0];
     suma = 0;
     for (int h = 1; h <= 24; h++) {
-        float prediccion = valor_actual + pendiente * h;
+        float prediccion = valor_actual + tendencia * h;
         suma += prediccion;
     }
     promedio = suma / 24.0;
-    printf("Zona: %s | Prediccion PM2.5: %.3f\n", zonas[zonaSeleccionada].nombre, promedio);
+    printf("Zona: %s | Prediccion PM2.5: %.2f\n", zonas[zonaSeleccionada].nombre, promedio);
 
     // NO2
     valor_actual = zonas[zonaSeleccionada].datosContaminacion[2];
-    pendiente = zonas[zonaSeleccionada].valoresPrediccion[2];
+    tendencia = zonas[zonaSeleccionada].valoresTendencia[2];
     suma = 0;
     for (int h = 1; h <= 24; h++) {
-        float prediccion = valor_actual + pendiente * h;
+        float prediccion = valor_actual + tendencia * h;
         suma += prediccion;
     }
     promedio = suma / 24.0;
-    printf("Zona: %s | Prediccion NO2: %.3f\n", zonas[zonaSeleccionada].nombre, promedio);
+    printf("Zona: %s | Prediccion NO2: %.2f\n", zonas[zonaSeleccionada].nombre, promedio);
 
     // SO2
     valor_actual = zonas[zonaSeleccionada].datosContaminacion[3];
-    pendiente = zonas[zonaSeleccionada].valoresPrediccion[3];
+    tendencia = zonas[zonaSeleccionada].valoresTendencia[3];
     suma = 0;
     for (int h = 1; h <= 24; h++) {
-        float prediccion = valor_actual + pendiente * h;
+        float prediccion = valor_actual + tendencia * h;
         suma += prediccion;
     }
     promedio = suma / 24.0;
-    printf("Zona: %s | Prediccion SO2: %.3f\n", zonas[zonaSeleccionada].nombre, promedio);
+    printf("Zona: %s | Prediccion SO2: %.2f\n", zonas[zonaSeleccionada].nombre, promedio);
     printf("===============================================================\n");
 }
 
@@ -755,10 +739,10 @@ void menuReporteZona() {
     // Calcular y actualizar predicciones de 24h para la zona seleccionada
     for (int j = 0; j < 5; j++) {
         float valor_actual = zonas[zonaSeleccionada].datosContaminacion[j];
-        float pendiente = zonas[zonaSeleccionada].valoresPrediccion[j];
+        float tendencia = zonas[zonaSeleccionada].valoresTendencia[j];
         float suma = 0;
         for (int h = 1; h <= 24; h++) {
-            float prediccion = valor_actual + pendiente * h;
+            float prediccion = valor_actual + tendencia * h;
             suma += prediccion;
         }
         float promedio = suma / 24.0f;
