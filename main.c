@@ -29,14 +29,14 @@ int main()
         printf ("5. Salir\n");
         printf ("Ingrese una opcion: ");
         if (scanf("%d", &opc) != 1) {
-            printf("Debe ingresar un número entero.\n");
+            printf("Debe ingresar un numero entero.\n");
             while (getchar() != '\n'); // Limpia el buffer
             opc = -1; // Para que entre al default
         }
 
         switch (opc) {
             case 1:
-                ingresoDatos();
+                ingresarDatos();
                 hecho++;
                 break;
             case 2:

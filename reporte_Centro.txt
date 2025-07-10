@@ -1,0 +1,20 @@
+
+================ REPORTE DE LA ZONA: Centro ================
+Contaminante | Actual     | Prediccion 24h 
+-----------------------------------------------
+PM2.5        | 15.00      | 15.00          
+PM10         | 20.00      | 20.00          
+NO2          | 12.00      | 12.00          
+SO2          | 30.00      | 30.00          
+CO           | 9.00       | 9.00           
+
+Contaminante mas critico: SO2 (30.00) - Clasificacion: Moderada (Amarilla)
+AVISO: Calidad del aire danina para grupos sensibles.
+
+Personas con enfermedades respiratorias, cardiacas, ninos y adultos mayores pueden experimentar efectos.
+
+Recomendaciones: 
+    Grupos sensibles deben reducir las actividades prolongadas o intensas al aire libre.
+    El resto de la poblacion puede realizar actividades normales, pero debe estar atenta a sintomas.
+    Promover practicas de bajo impacto ambiental (ej., bicicleta, caminar).
+==============================================================
