@@ -3,3 +3,4 @@ Datos sobre la contaminación:
 https://aqicn.org/map/quito/
 https://aireambiente.quito.gob.ec/
 https://www.aqi.in/es/dashboard/ecuador/pichincha/quito
+https://www.who.int/es/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health
