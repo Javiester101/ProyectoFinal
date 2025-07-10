@@ -24,10 +24,9 @@ int main()
         printf ("\n=== Prediccion de Contaminacion ===\n");
         printf ("1. Ingresar datos de contaminacion\n");
         printf ("2. Calcular niveles de contaminacion en las proximas 24 horas\n");
-        printf ("3. Generar reporte de contaminacion de totas las zonas\n");
-        printf ("4. Generar reporte de contaminacion por zona\n");
-        printf ("5. Mostrar reporte por zona ya generado\n");
-        printf ("6. Salir\n");
+        printf ("3. Generar reporte de contaminacion por zona\n");
+        printf ("4. Mostrar reporte por zona ya generado\n");
+        printf ("5. Salir\n");
         printf ("Ingrese una opcion: ");
         if (scanf("%d", &opc) != 1) {
             printf("Debe ingresar un número entero.\n");
@@ -51,14 +50,6 @@ int main()
                 menuPrediccion24hZona();
                 break;
             case 3:
-                if (hecho <2) {
-                    printf("Debe ingresar los datos de contaminacion antes de generar el reporte.\n");
-                    break;
-                }
-                GenerarReporte();
-                MostrarReporte();
-                break;
-            case 4:
                 if (hecho < 2)
                 {
                     printf("Debe ingresar los datos de contaminacion antes de generar el reporte por zona.\n");
@@ -66,15 +57,15 @@ int main()
                 }
                 menuReporteZona();
                 break;
-            case 5:
+            case 4:
                 mostrarReporteZonaGenerado();
                 break;
-            case 6:
+            case 5:
                 printf("Saliendo del programa...\n");
                 break;
             default:
                 printf("Opcion invalida. Intente de nuevo.\n");
         }
-    }while (opc != 6);
+    }while (opc != 5);
     return 0;
 }

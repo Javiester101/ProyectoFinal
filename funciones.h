@@ -25,7 +25,6 @@ struct Contaminante {
     extern struct registroFecha fecha;
 
 
-void Inicioprograma();
 void IncluirArchivoEnReporte(FILE *reporte, const char *nombreArchivo);
 void ingresoDatos();
 void GuardarDatosCO ();
