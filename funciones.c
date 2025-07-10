@@ -42,7 +42,7 @@ void ingresarDatos() {
     esValido = 0;
     valorTemporal = 0;
     do {
-        printf("Ingrese el mes actual (1 - 12): ");
+        printf("Ingrese el mes: ");
 
         if (scanf("%f", &valorTemporal) != 1) {
             printf("Debe ingresar un numero. Intente de nuevo.\n");
@@ -88,7 +88,7 @@ void ingresarDatos() {
             max_dia = 31;
         }
 
-        printf("Ingrese el dia actual (1 - %d): ", max_dia);
+        printf("Ingrese el dia (actual):);
 
         if (scanf("%f", &valorTemporal) != 1) {
             printf("Debe ingresar un numero. Intente de nuevo.\n");
